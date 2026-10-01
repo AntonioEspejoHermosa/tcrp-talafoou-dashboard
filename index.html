@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Tonga Coastal Resilience Project (TCRP)</title>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand-block">
+    <div class="logos">
+      <img src="assets/undp.png" alt="UNDP" class="logo logo-undp">
+      <img src="assets/mares.png" alt="MARES" class="logo logo-mares">
+      <img src="assets/intercoastal.png" alt="Intercoastal" class="logo logo-intercoastal">
+    </div>
+    <div class="title-block">
+      <h1>Tonga Coastal Resilience Project (TCRP)</h1>
+      <p id="study-subtitle"></p>
+    </div>
+  </div>
+  <div class="header-actions">
+    <label>Basemap
+      <select id="basemap-select">
+        <option value="imagery">Satellite</option>
+        <option value="streets">Streets</option>
+        <option value="none">None</option>
+      </select>
+    </label>
+    <label>Opacity
+      <input id="opacity" type="range" min="0" max="1" step="0.05" value="0.75">
+    </label>
+  </div>
+</header>
+
+<main class="layout">
+<aside class="sidebar">
+
+<section class="card">
+  <h2>Scenario</h2>
+  <label>Joint wave-surge condition
+    <select id="condition-select"></select>
+  </label>
+  <label>Sea-level-rise increment
+    <select id="slr-select"></select>
+  </label>
+  <label>Result layer
+    <select id="layer-select"></select>
+  </label>
+
+  <div class="view-mode" aria-label="Seawall comparison mode">
+    <button type="button" id="mode-defense" class="mode-button active">With seawall</button>
+    <button type="button" id="mode-raw" class="mode-button">Without seawall</button>
+    <button type="button" id="mode-compare" class="mode-button compare-button">Compare</button>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Legend</h2>
+  <div id="legend-gradient"></div>
+  <div class="legend-labels">
+    <span id="legend-min"></span>
+    <span id="legend-max"></span>
+  </div>
+</section>
+
+<section class="card">
+  <h2>Joint forcing</h2>
+  <dl id="forcing"></dl>
+</section>
+
+<section class="card">
+  <h2 id="statistics-title">Scenario statistics</h2>
+  <div id="statistics"></div>
+</section>
+
+<section class="card downloads">
+  <h2>Downloads</h2>
+  <a id="download-layer-defense" href="#" download>With-seawall GeoTIFF</a>
+  <a id="download-layer-raw" href="#" download>Without-seawall GeoTIFF</a>
+  <a id="download-netcdf-defense" href="#" download>With-seawall summary NetCDF</a>
+  <a id="download-netcdf-raw" href="#" download>Without-seawall summary NetCDF</a>
+</section>
+
+</aside>
+
+<section class="map-panel">
+  <div id="map-grid" class="map-grid">
+    <div class="map-wrap">
+      <div id="map-label-left" class="map-label">With seawall</div>
+      <div id="map"></div>
+    </div>
+    <div id="compare-wrap" class="map-wrap compare-wrap">
+      <div class="map-label">Without seawall</div>
+      <div id="map-compare"></div>
+    </div>
+  </div>
+  <div id="loading" class="loading">Loading result...</div>
+</section>
+</main>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
